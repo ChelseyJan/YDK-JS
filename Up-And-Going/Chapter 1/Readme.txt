@@ -1,0 +1,1 @@
+For each chapter of this book, I will have code written in both Javascript and Python. They should both perform the same function as the other.
