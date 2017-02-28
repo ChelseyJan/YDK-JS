@@ -2,3 +2,5 @@ This is an introductory file for testing out my new repository to store the home
 
 Please see link for books here:
 https://github.com/getify/You-Dont-Know-JS
+
+This will be subdivided by books and chapters.
