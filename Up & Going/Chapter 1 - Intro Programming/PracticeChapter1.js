@@ -6,7 +6,8 @@ The current github link to this book series is contained here:
 https://github.com/getify/You-Dont-Know-JS */
 
 // The following program is used to calculate the total cost of a phone purchase
-// I slightly modified the instructions to make more sense financially
+// Note: The logic behind this program doesn't make a ton of sense, but it works functionally
+// I may come back and modify this program further, but want to continue with the lessons
 
 // Function to properly format the output of a price
 function printPrice(price) {
@@ -20,6 +21,7 @@ function buyPhones() {
 	subtotal = 0.00;
 	while (subtotal < (bankAcctBal - phonePrice)) {
 		subtotal = subtotal + phonePrice;
+		//console.log("internal subtotal" + subtotal);
 	}
 	return subtotal;
 }
@@ -45,30 +47,22 @@ var bankAcctBal = 0;
 var spendThreshold = 0;
 var total = 0;
 
-//bankAcctBal = 406.77;
-//phonePrice = 107.00;
-
 bankAcctBal = prompt("What is the current balance in your bank account?");
 phonePrice = prompt("What is the cost of the phone you will be buying?");
-console.log(bankAcctBal);
-Number(bankAcctBal);
-console.log(bankAcctBal);
-Number(phonePrice);
-console.log(phonePrice);
+bankAcctBal = Number(bankAcctBal);
+phonePrice = Number(phonePrice);
 
-spendThreshold = (bankAcctBal - 50);
-console.log("sector 3" + spendThreshold);
+if (bankAcctBal <= 50) {
+	spendThreshold = 0;
+} else {
+	spendThreshold = (bankAcctBal - 50);
+}
 
-console.log("total before functions " + total);
 total = buyPhones();
-console.log("total #1 " + total);
 total = buyAccessories(total);
-console.log("total #2 " + total);
 total = calculateTax(total);
-console.log("total #3 " + total);
 
 console.log("Your total purchase price is: ");
-console.log(total);
 printPrice(total);
 
 console.log("Can I afford this?");
@@ -80,3 +74,5 @@ if (total <= bankAcctBal) {
 } else {
 	console.log("No, you don't have enough money.");
 }
+
+// the end
