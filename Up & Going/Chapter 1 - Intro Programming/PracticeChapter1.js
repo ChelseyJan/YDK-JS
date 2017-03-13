@@ -5,24 +5,8 @@
 The current github link to this book series is contained here:
 https://github.com/getify/You-Dont-Know-JS */
 
-
 // The following program is used to calculate the total cost of a phone purchase
-
-//Calculate the total price of a phone purchase
-
-//Buy accessories for each phone as long as your purchase amount is below your mental spending threshold.
-//After caculating purchase amount, add in the tax, then print out the calculated purchase amount, properly formatted.
-//Check amount against bank account balance to see if you can afford it.
-//Incorporate input into this program, perhaps with prompt(..)
-
-// Declare constants
-var TAX_RATE = 0.08;
-var ACC_PRICE = 9.99;
-var SPEND_THRESHOLD = 350.00;
-
-// Declare variables
-var phonePrice = 0;
-var bankAcctBal = 0;
+// I slightly modified the instructions to make more sense financially
 
 // Function to properly format the output of a price
 function printPrice(price) {
@@ -31,24 +15,68 @@ function printPrice(price) {
 	console.log("$" + price);
 }
 
-//Keep purchasing phones (as a loop) until you almost run out of money in your bank account
-//This is working as is
-phonePrice = 99.99;
-bankAcctBal = 350.00;
-
+// Loop to purchase phones
 function buyPhones() {
-	var subtotal = 0;
-	while (subtotal < (bankAcctBal - subtotal)) {
+	subtotal = 0.00;
+	while (subtotal < (bankAcctBal - phonePrice)) {
 		subtotal = subtotal + phonePrice;
 	}
 	return subtotal;
 }
 
+// Loop to purchase accessories
+function buyAccessories(subtotal) {
+	while (subtotal < (spendThreshold - ACC_PRICE)) {
+		subtotal = subtotal + ACC_PRICE;
+	}
+	return subtotal;
+}
+
+// Calculate the tax
+function calculateTax(amt) {
+	amt = amt + (amt * TAX_RATE);
+	return amt;
+}
+
+var TAX_RATE = 0.08;
+var ACC_PRICE = 9.99;
+var phonePrice = 0;
+var bankAcctBal = 0;
+var spendThreshold = 0;
 var total = 0;
-total = buyPhones();
-console.log("The total purchase price is : " + total);
-// Function to purchase phones until out of money in bank account
+
+//bankAcctBal = 406.77;
+//phonePrice = 107.00;
 
 bankAcctBal = prompt("What is the current balance in your bank account?");
-
 phonePrice = prompt("What is the cost of the phone you will be buying?");
+console.log(bankAcctBal);
+Number(bankAcctBal);
+console.log(bankAcctBal);
+Number(phonePrice);
+console.log(phonePrice);
+
+spendThreshold = (bankAcctBal - 50);
+console.log("sector 3" + spendThreshold);
+
+console.log("total before functions " + total);
+total = buyPhones();
+console.log("total #1 " + total);
+total = buyAccessories(total);
+console.log("total #2 " + total);
+total = calculateTax(total);
+console.log("total #3 " + total);
+
+console.log("Your total purchase price is: ");
+console.log(total);
+printPrice(total);
+
+console.log("Can I afford this?");
+if (total <= bankAcctBal) {
+	console.log("Yes, you can afford this purchase.");
+	console.log("Balance in account after purchase: ")
+	bankAcctBal = bankAcctBal - total;
+	printPrice(bankAcctBal);
+} else {
+	console.log("No, you don't have enough money.");
+}
