@@ -31,20 +31,22 @@ function printPrice(price) {
 	console.log("$" + price);
 }
 
-//Keep purchasing phones (as a loop) until you run out of money in your bank account
-phonePrice = 99.99
-bankAcctBal = 350.00
+//Keep purchasing phones (as a loop) until you almost run out of money in your bank account
+//This is working as is
+phonePrice = 99.99;
+bankAcctBal = 350.00;
+
 function buyPhones() {
 	var subtotal = 0;
-	while (bal < bankAcctBal) {
+	while (subtotal < (bankAcctBal - subtotal)) {
 		subtotal = subtotal + phonePrice;
 	}
 	return subtotal;
 }
 
-var subtotal = 0;
-subtotal = buyPhones;
-console.log(subtotal);
+var total = 0;
+total = buyPhones();
+console.log("The total purchase price is : " + total);
 // Function to purchase phones until out of money in bank account
 
 bankAcctBal = prompt("What is the current balance in your bank account?");
